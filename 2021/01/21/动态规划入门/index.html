@@ -23,20 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"fermemtime.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="今天是2021年的1月18日，我的博客正式运行 这是一篇测试博客">
+<meta name="description" content="一.背包问题1.01背包朴素版解法：  首先是确定状态表示，对于01背包问题，我们通常采用定义一个二维数组来表示它的状态，即f[i][j],对应的意义就是对于选到第i件物品的时候，我们此时的背包容量为j的状态，由于i是对物品数量的遍历，j是对存储空间的遍历，所以我们就已经将所有状态都表示出来，最后的答案就是f[n][m],即选到第n件物品时，背包容量为m的状态，而这种状态也是题目所要求的。   其">
 <meta property="og:type" content="article">
-<meta property="og:title" content="article title">
-<meta property="og:url" content="http://fermemtime.cn/2021/01/18/article-title/index.html">
+<meta property="og:title" content="动态规划入门">
+<meta property="og:url" content="http://fermemtime.cn/2021/01/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Justime">
-<meta property="og:description" content="今天是2021年的1月18日，我的博客正式运行 这是一篇测试博客">
+<meta property="og:description" content="一.背包问题1.01背包朴素版解法：  首先是确定状态表示，对于01背包问题，我们通常采用定义一个二维数组来表示它的状态，即f[i][j],对应的意义就是对于选到第i件物品的时候，我们此时的背包容量为j的状态，由于i是对物品数量的遍历，j是对存储空间的遍历，所以我们就已经将所有状态都表示出来，最后的答案就是f[n][m],即选到第n件物品时，背包容量为m的状态，而这种状态也是题目所要求的。   其">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-18T05:41:25.000Z">
-<meta property="article:modified_time" content="2021-01-18T05:48:54.306Z">
+<meta property="article:published_time" content="2021-01-21T10:42:29.000Z">
+<meta property="article:modified_time" content="2021-01-21T13:57:02.809Z">
 <meta property="article:author" content="ZhongRen Fan">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://fermemtime.cn/2021/01/18/article-title/">
+<link rel="canonical" href="http://fermemtime.cn/2021/01/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/">
 
 
 <script class="page-configurations">
@@ -48,7 +49,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>article title | Justime</title>
+<title>动态规划入门 | Justime</title>
   
 
 
@@ -149,7 +150,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -162,6 +163,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一.背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-01%E8%83%8C%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">2.完全背包</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,7 +231,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://fermemtime.cn/2021/01/18/article-title/">
+    <link itemprop="mainEntityOfPage" href="http://fermemtime.cn/2021/01/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -242,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          article title
+          动态规划入门
         </h1>
 
         <div class="post-meta-container">
@@ -254,7 +256,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-01-18 13:41:25 / 修改时间：13:48:54" itemprop="dateCreated datePublished" datetime="2021-01-18T13:41:25+08:00">2021-01-18</time>
+      <time title="创建时间：2021-01-21 18:42:29 / 修改时间：21:57:02" itemprop="dateCreated datePublished" datetime="2021-01-21T18:42:29+08:00">2021-01-21</time>
     </span>
 
   
@@ -272,7 +274,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>31</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -290,9 +292,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>今天是2021年的1月18日，我的博客正式运行</p>
-<p>这是一篇测试博客</p>
-
+        <h1 id="一-背包问题"><a href="#一-背包问题" class="headerlink" title="一.背包问题"></a>一.背包问题</h1><h2 id="1-01背包"><a href="#1-01背包" class="headerlink" title="1.01背包"></a><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/2/">1.01背包</a></h2><p>朴素版解法：</p>
+<blockquote>
+<p>首先是确定状态表示，对于01背包问题，我们通常采用定义一个二维数组来表示它的状态，即f[i][j],对应的意义就是对于选到第i件物品的时候，我们此时的背包容量为j的状态，由于i是对物品数量的遍历，j是对存储空间的遍历，所以我们就已经将所有状态都表示出来，最后的答案就是f[n][m],即选到第n件物品时，背包容量为m的状态，而这种状态也是题目所要求的。</p>
+</blockquote>
+<blockquote>
+<p>其次是状态转移方程的确立，我们不难发现，对于每一种状态，它都有以下两种状态的转移，1.选当前物品，此时它的价值为选完第i - 1件物品时的价值加上第i件物品的价值，并且因为选取了第i件物品，所以我们的背包容量要相应减去。2.不选当前物品，价值与选取第i-1件物品后的价值相同。</p>
+</blockquote>
+<blockquote>
+<p>得到状态转移方程：①当背包能够容纳时：f[i][j] = max(f[i - 1][j], f[i - 1][j - v[i]] + w[i]);②：当背包不能容纳时：f[i][j] = f[i - 1][j];</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using <span class="keyword">namespace</span> <span class="title">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">1010</span>][<span class="number">1010</span>], v[<span class="number">1010</span>], w[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;   cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            <span class="comment">//如果能够装下</span></span><br><span class="line">            <span class="keyword">if</span>(j &gt;= v[i]) &#123;</span><br><span class="line">                f[i][j] = max(f[i - <span class="number">1</span>][j - v[i]] + w[i], f[i - <span class="number">1</span>][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[i][j] = f[i - <span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[n][m] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，此处我们可以将二维数组优化为一维，先给出代码，再进行说明</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using <span class="keyword">namespace</span> <span class="title">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">1010</span>], w[<span class="number">1010</span>], v[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;   cin  &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= v[i])</span><br><span class="line">                f[j] = max(f[j], f[j - v[i]] + w[i]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                f[j] = f[j];</span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们对于动态规划方程的优化，基本都是建立在原有的基础上，再对其进行改动的，再次回想01背包问题的DP思想，再来看一个最主要的改变：j有朴素版的从小到大变成了从大到小，这样的改变，实际上就是为了满足后面的f[j] = max(f[j], f[j - v[i] + w[i])，注意，通过这个式子，我们就很完美的将二维变成了一维，二维的第一维的作用就是为了判断是当前状态的前一状态，而由于这里j是从大到小的，所以等式的右边的值实际上是上一次的值，即前一种状态。</p>
+</blockquote>
+<h2 id="2-完全背包"><a href="#2-完全背包" class="headerlink" title="2.完全背包"></a>2.完全背包</h2>
     </div>
 
     
@@ -318,19 +334,19 @@
   </div>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/17/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/01/20/%E8%83%8C%E8%B4%9F%E8%BF%87%E5%8E%BB%EF%BC%8C%E6%9C%AA%E6%9D%A5%E5%8F%AF%E6%9C%9F/" rel="prev" title="背负过去，未来可期">
+                  <i class="fa fa-chevron-left"></i> 背负过去，未来可期
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/01/18/whatfuck/" rel="next" title="whatfuck">
-                  whatfuck <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
