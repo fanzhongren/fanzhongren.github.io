@@ -31,7 +31,7 @@
 <meta property="og:description" content="一.背包问题1.01背包朴素版解法：  首先是确定状态表示，对于01背包问题，我们通常采用定义一个二维数组来表示它的状态，即f[i][j],对应的意义就是对于选到第i件物品的时候，我们此时的背包容量为j的状态，由于i是对物品数量的遍历，j是对存储空间的遍历，所以我们就已经将所有状态都表示出来，最后的答案就是f[n][m],即选到第n件物品时，背包容量为m的状态，而这种状态也是题目所要求的。   其">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-21T10:42:29.000Z">
-<meta property="article:modified_time" content="2021-01-21T13:57:02.809Z">
+<meta property="article:modified_time" content="2021-01-23T15:39:06.924Z">
 <meta property="article:author" content="ZhongRen Fan">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -163,7 +163,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一.背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-01%E8%83%8C%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">2.完全背包</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一.背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-01%E8%83%8C%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">2.完全背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85"><span class="nav-number">1.3.</span> <span class="nav-text">多重背包</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,10 +254,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-01-21 18:42:29 / 修改时间：21:57:02" itemprop="dateCreated datePublished" datetime="2021-01-21T18:42:29+08:00">2021-01-21</time>
+      <time title="创建时间：2021-01-21 18:42:29" itemprop="dateCreated datePublished" datetime="2021-01-21T18:42:29+08:00">2021-01-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-23 23:39:06" itemprop="dateModified" datetime="2021-01-23T23:39:06+08:00">2021-01-23</time>
+      </span>
 
   
     <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -274,14 +280,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>2.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -308,7 +314,29 @@
 <blockquote>
 <p>我们对于动态规划方程的优化，基本都是建立在原有的基础上，再对其进行改动的，再次回想01背包问题的DP思想，再来看一个最主要的改变：j有朴素版的从小到大变成了从大到小，这样的改变，实际上就是为了满足后面的f[j] = max(f[j], f[j - v[i] + w[i])，注意，通过这个式子，我们就很完美的将二维变成了一维，二维的第一维的作用就是为了判断是当前状态的前一状态，而由于这里j是从大到小的，所以等式的右边的值实际上是上一次的值，即前一种状态。</p>
 </blockquote>
-<h2 id="2-完全背包"><a href="#2-完全背包" class="headerlink" title="2.完全背包"></a>2.完全背包</h2>
+<hr>
+<div STYLE="page-break-after: always;"></div>
+
+<h2 id="2-完全背包"><a href="#2-完全背包" class="headerlink" title="2.完全背包"></a>2.完全背包</h2><p>完全背包与01背包的唯一不同点就在于，完全背包问题中，物品的数量是无限的，可以仿照01背包的推导，首先确定在选取到第i件物品时，一共会产生两种状态：1.装第i件物品，2.不装第i件物品，由此，得到了一个状态方程：</p>
+<blockquote>
+<p>f[i][j] = max(f[i - 1][j], f[i - 1][j - k * v] + k * w);<br>其中，k代表选取了k件第i件物品，f[i][j]的含义是选取到第i件物品时，背包容量为j的状态。</p>
+</blockquote>
+<p>由于该方程中max(f[i - 1][j], f[i - 1][j - k * v] + k * w)展开后，是等于如下的一个式子</p>
+<blockquote>
+<p>max(f[i - 1][j], f[i - 1][j - v] + w, f[i - 1][j - 2v] + 2w, ……,f[i - 1][j - kv] + kw);</p>
+</blockquote>
+<p>而一旦通过构造f[i][j - v]，可得到</p>
+<blockquote>
+<p>f[i][j - v] = max(f[i - 1][j - v] , f[i - 1][j - 2v]+ w, f[i - 1][j - 3v] + 2w, ……,f[i - 1][j - kv] + kw);</p>
+</blockquote>
+<p>通过观察，我们可以得到最终的状态转移方程:</p>
+<blockquote>
+<p>f[i][j] = max(f[i - 1][j], f[i][j - v] + w);</p>
+</blockquote>
+<p>代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line">using <span class="keyword">namespace</span> <span class="title">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">1010</span>], v[<span class="number">1010</span>], w[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;   cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = v[i]; j &lt;= m; j++)</span><br><span class="line">            f[j] = max(f[j], f[j - v[i]] + w[i]);</span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2>
     </div>
 
     
@@ -400,13 +428,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
